@@ -24,7 +24,14 @@
     <!-- Opção para adicionar novos items -->
     <section class="newGame">
       <input type="text" id="newGameName" placeholder="Adicione novo Jogo" />
-      <input type="text" id="newPlatform" placeholder="Plataforma" />
+      <select id="newPlatform" placeholder="Plataforma">
+        <option value="Plataforma">Plataforma</option>
+        <option value="Pc">PC</option>
+        <option value="Playstation">Playstation</option>
+        <option value="Xbox">Xbox</option>
+        <option value="Nintendo">Nintendo</option>
+        <option value="Mobile">Mobile</option>
+      </select>
       <input type="text" id="newStore" placeholder="Loja" />
       <input type="text" id="newPrice" placeholder="Preço" />
       <span onclick="newGame()" class="addBtn">Adicionar</span>
