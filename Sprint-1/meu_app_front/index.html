@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link name="stylesheet" href="styles.css" />
+
+    <title>Catalogo</title>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <header>
+      <div>
+        <h2>Catalogo de Jogos</h2>
+      </div>
+      <div class="banner">
+        <img
+          src="https://github.com/LeonardoDFKleuser/MVP-PUC-RIO/blob/main/Sprint-1/meu_app_front/img/Arcade.jpg"
+          alt="  error to load image"
+        />
+      </div>
+    </header>
+
+    <!-- Opção para adicionar novos items -->
+    <section class="newGame">
+      <input type="text" id="newGameName" placeholder="Adicione novo Jogo" />
+      <input type="text" id="newplatform" placeholder="Plataforma" />
+      <input type="text" id="newStore" placeholder="Loja" />
+      <input type="text" id="newPrice" placeholder="Preço" />
+      <span onclick="newGame()" class="addBtn">Adicionar</span>
+    </section>
+
+    <!-- Tabela para exibição de itens cadastrados -->
+    <section class="games">
+      <table id="myGames">
+        <tr>
+          Nome
+        </tr>
+        <tr>
+          Plataforma
+        </tr>
+        <tr>
+          Loja
+        </tr>
+        <tr>
+          Preço
+        </tr>
+        <th>
+          <img
+            src="Sprint-1\meu_app_front\img\pngwing.com.png"
+            width="15px"
+            height="15px"
+            alt="Delete"
+          />
+        </th>
+      </table>
+    </section>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
