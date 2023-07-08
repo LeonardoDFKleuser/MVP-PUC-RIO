@@ -7,7 +7,7 @@ from  model import Base, Comentario
 
 
 
-class jogo(Base):
+class Jogo(Base):
     __tablename__='jogo'
 
 

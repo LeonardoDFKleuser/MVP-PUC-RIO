@@ -59,6 +59,14 @@ header {
   font-size: 16px;
 }
 
+#newGameName::placeholder {
+  color: rgb(70, 5, 45);
+}
+
+label {
+  display: block;
+}
+
 #newPlatform {
   margin: 0;
   background-color: rgb(180, 148, 210);
@@ -72,7 +80,7 @@ header {
   margin: 0;
   background-color: rgb(180, 148, 210);
   border: 1px solid rgb(35, 32, 24);
-  width: 5%;
+  width: auto;
   padding: 10px;
   font-size: 16px;
 }
@@ -81,9 +89,13 @@ header {
   margin: 0;
   background-color: rgb(180, 148, 210);
   border: 1px solid rgb(35, 32, 24);
-  width: 5%;
+  width: 15%;
   padding: 10px;
   font-size: 16px;
+}
+
+#newPrice::placeholder {
+  color: rgb(70, 5, 45);
 }
 
 .addBtn {

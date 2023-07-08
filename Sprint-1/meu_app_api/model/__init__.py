@@ -6,7 +6,7 @@ import os
 #importando elementos ja definidos 
 from model.base import Base
 from model.comentario import Comentario
-from model.jogo import jogo
+from model.jogo import Jogo
 
 db_path = "database/"
 
@@ -22,7 +22,7 @@ if not os.path.exists(db_path):
     engine = create_engine(db_url, echo=False)
 
     # Instancia um criador de seção com o banco
-    session = sessionmaker(bind=engine)
+    Session = sessionmaker(bind=engine)
 
     # Cria o banco caso ele não exista
     if not database_exists(engine.url):
