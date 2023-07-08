@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link name="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />
 
     <title>Catalogo</title>
   </head>
+
   <body>
     <!-- Cabeçalho -->
     <header>
@@ -16,17 +17,14 @@
         <h2>Catalogo de Jogos</h2>
       </div>
       <div class="banner">
-        <img
-          src="https://github.com/LeonardoDFKleuser/MVP-PUC-RIO/blob/main/Sprint-1/meu_app_front/img/Arcade.jpg"
-          alt="  error to load image"
-        />
+        <img src=".\img\giphy.webp" alt="  error to load image" />
       </div>
     </header>
 
     <!-- Opção para adicionar novos items -->
     <section class="newGame">
       <input type="text" id="newGameName" placeholder="Adicione novo Jogo" />
-      <input type="text" id="newplatform" placeholder="Plataforma" />
+      <input type="text" id="newPlatform" placeholder="Plataforma" />
       <input type="text" id="newStore" placeholder="Loja" />
       <input type="text" id="newPrice" placeholder="Preço" />
       <span onclick="newGame()" class="addBtn">Adicionar</span>
@@ -49,7 +47,7 @@
         </tr>
         <th>
           <img
-            src="Sprint-1\meu_app_front\img\pngwing.com.png"
+            src=".\img\pngwing.com.png"
             width="15px"
             height="15px"
             alt="Delete"
@@ -59,5 +57,9 @@
     </section>
 
     <script src="scripts.js"></script>
+
+    <footer>
+      <img src=".\img\nian cat.gif" />
+    </footer>
   </body>
 </html>
