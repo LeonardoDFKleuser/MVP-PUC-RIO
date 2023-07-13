@@ -1,0 +1,29 @@
+[2023-07-12 22:12:36,689] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:12:36] "GET /jogos HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:12:36,858] DEBUG get_jogos() L73   Coletando jogos  - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L73  
+[2023-07-12 22:12:36,860] DEBUG get_jogos() L83   2 rodutos econtrados - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L83  
+[2023-07-12 22:12:36,861] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:12:36] "GET /jogos HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:12:37,045] DEBUG get_jogos() L73   Coletando jogos  - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L73  
+[2023-07-12 22:12:37,047] DEBUG get_jogos() L83   2 rodutos econtrados - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L83  
+[2023-07-12 22:12:37,047] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:12:37] "GET /jogos HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:12:37,204] DEBUG get_jogos() L73   Coletando jogos  - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L73  
+[2023-07-12 22:12:37,206] DEBUG get_jogos() L83   2 rodutos econtrados - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L83  
+[2023-07-12 22:12:37,207] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:12:37] "GET /jogos HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:12:37,378] DEBUG get_jogos() L73   Coletando jogos  - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L73  
+[2023-07-12 22:12:37,380] DEBUG get_jogos() L83   2 rodutos econtrados - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L83  
+[2023-07-12 22:12:37,381] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:12:37] "GET /jogos HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:12:37,561] DEBUG get_jogos() L73   Coletando jogos  - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L73  
+[2023-07-12 22:12:37,562] DEBUG get_jogos() L83   2 rodutos econtrados - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L83  
+[2023-07-12 22:12:37,563] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:12:37] "GET /jogos HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:12:37,744] DEBUG get_jogos() L73   Coletando jogos  - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L73  
+[2023-07-12 22:12:37,745] DEBUG get_jogos() L83   2 rodutos econtrados - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L83  
+[2023-07-12 22:12:37,746] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:12:37] "GET /jogos HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:13:59,299] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:13:59] "OPTIONS /jogo?id=2 HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:13:59,301] DEBUG del_jogo() L127  Deletando dados sobre jogo #Dark cats 3 - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L127 
+[2023-07-12 22:13:59,305] DEBUG del_jogo() L135  Deletado jogo #Dark cats 3 - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L135 
+[2023-07-12 22:13:59,305] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:13:59] "DELETE /jogo?id=2 HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:14:14,895] DEBUG add_jogo() L41   Adicionando jogo de nome: '123' - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L41  
+[2023-07-12 22:14:14,901] DEBUG add_jogo() L50   Adicionado jogo de nome: '123' - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L50  
+[2023-07-12 22:14:14,902] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:14:14] "POST /jogo HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
+[2023-07-12 22:15:12,915] DEBUG add_jogo() L41   Adicionando jogo de nome: '3432R' - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L41  
+[2023-07-12 22:15:12,920] DEBUG add_jogo() L50   Adicionado jogo de nome: '3432R' - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\app.py L50  
+[2023-07-12 22:15:12,921] INFO _log() L224  127.0.0.1 - - [12/Jul/2023 22:15:12] "POST /jogo HTTP/1.1" 200 - - call_trace=C:\Users\Leonardo Kleuser\Documents\PUC\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 

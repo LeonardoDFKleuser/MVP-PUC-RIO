@@ -3,7 +3,6 @@ body {
 }
 ul,
 li {
-  font-family: tahoma;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -54,13 +53,14 @@ header {
   margin: 0;
   background-color: rgb(180, 148, 210);
   border: 1px solid rgb(35, 32, 24);
-  width: 25%;
+  width: auto;
+  border-radius: 10px 0px;
   padding: 10px;
   font-size: 16px;
 }
 
 #newGameName::placeholder {
-  color: rgb(70, 5, 45);
+  color: black;
 }
 
 label {
@@ -72,6 +72,7 @@ label {
   background-color: rgb(180, 148, 210);
   border: 1px solid rgb(35, 32, 24);
   width: auto;
+  border-radius: 10px 0px;
   padding: 10px;
   font-size: 16px;
 }
@@ -81,6 +82,7 @@ label {
   background-color: rgb(180, 148, 210);
   border: 1px solid rgb(35, 32, 24);
   width: auto;
+  border-radius: 10px 0px;
   padding: 10px;
   font-size: 16px;
 }
@@ -89,13 +91,14 @@ label {
   margin: 0;
   background-color: rgb(180, 148, 210);
   border: 1px solid rgb(35, 32, 24);
-  width: 15%;
+  width: auto;
+  border-radius: 10px 0px;
   padding: 10px;
   font-size: 16px;
 }
 
 #newPrice::placeholder {
-  color: rgb(70, 5, 45);
+  color: black;
 }
 
 .addBtn {
@@ -106,7 +109,7 @@ label {
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 2px;
+  border-radius: 10px 0px;
 }
 
 .addBtn:hover {

@@ -6,57 +6,170 @@ from sqlalchemy.exc import IntegrityError
 
 from model import Session, Jogo, Comentario
 from logger import logger
-from schemas import *  
+from schemas import *
 from flask_cors import CORS
 
-info =Info(title="Minha API", version="1.0.0")
+info = Info(title="Minha API", version="1.0.0")
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
-#Definindo Tags
-Home_tag = Tag(name="Documentação", description="documentação em Swagger")
+# definindo tags
+home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
 jogo_tag = Tag(name="Jogo", description="Adição, visualização e remoção de jogos à base")
-comentario_tag = Tag(name="Comentário", description="Adição de um comentário à produtos cadastrados na base")
+comentario_tag = Tag(name="Comentario", description="Adição de um comentário à um jogo cadastrado na base")
 
 
-@app.get('/openapi/swagger', tags=[Home_tag])
+@app.get('/', tags=[home_tag])
 def home():
-    """ Redireciona para o Swagger para consulta da documentação.
+    """Redireciona para /openapi, tela que permite a escolha do estilo de documentação.
     """
-    return redirect('/openapi/swagger')
+    return redirect('/openapi')
 
 
-@app.post('/jogo', tags=[jogo_tag], responses={"200": JogoViewSchema, "409": ErrorSchema, "400": ErrorSchema})
-def add_jogo(form: JogosSchema):
-    """Adiciona um novo jogo ao banco
-    
-    retorna uma representação dos jogos e comentários associados.
+@app.post('/jogo', tags=[jogo_tag],
+          responses={"200": JogoViewSchema, "409": ErrorSchema, "400": ErrorSchema})
+def add_jogo(form: JogoSchema):
+    """Adiciona um novo jogo à base de dados
+
+    Publica uma representação dos jogos e comentários associados.
     """
+    jogo = Jogo(
+        nome=form.nome,
+        plataforma=form.plataforma,
+        loja=form.loja,
+        preco=form.preco)
+    logger.debug(f"Adicionando jogo de nome: '{jogo.nome}'")
+    try:
+        # criando conexão com a base
+        session = Session()
+        # adicionando jogo
+        session.add(jogo)
+        # efetivando o camando de adição de novo item na tabela
+        session.commit()
+        session.refresh(jogo)
+        logger.debug(f"Adicionado jogo de nome: '{jogo.nome}'")
+        return apresenta_jogo(jogo), 200
 
-jogo = Jogo(
-    nome=form.nome,
-    plataforma=form.plataforma,
-    loja=form.loja,
-    preço=form.preço,)
-logger.debug(f"Adicionando jogo de nome:  '{jogo.nome}'")
-try:
-    #criando conexão com a base
+    except IntegrityError as e:
+        # como a duplicidade do nome é a provável razão do IntegrityError
+        error_msg = "jogo de mesmo nome já salvo na base :/"
+        logger.warning(f"Erro ao adicionar jogo '{jogo.nome}', {error_msg}")
+        return {"message": error_msg}, 409
+
+    except Exception as e:
+        # caso um erro fora do previsto
+        error_msg = "Não foi possível salvar novo item :/"
+        logger.warning(f"Erro ao adicionar jogo '{jogo.nome}', {error_msg}")
+        return {"message": error_msg}, 400
+
+
+@app.get('/jogos', tags=[jogo_tag],
+         responses={"200": ListagemJogoSchema, "404": ErrorSchema})
+def get_jogos():
+    """Faz a busca por todos os jogos cadastrados
+
+    Retorna uma representação da listagem de jogos.
+    """
+    logger.debug(f"Coletando jogos ")
+    # criando conexão com a base
     session = Session()
-    #Adicionando um jogo
-    session.add(jogo)
-    #efetivando o comando de adição de novo item na tabela
+    # fazendo a busca
+    jogos = session.query(Jogo).all()
+
+    if not jogos:
+        # se não há jogos cadastrados
+        return {"jogos": []}, 200
+    else:
+        logger.debug(f"%d rodutos econtrados" % len(jogos))
+        # retorna a representação de produto
+        print(jogos)
+        return apresenta_jogos(jogos), 200
+
+
+@app.get('/jogo', tags=[jogo_tag],
+         responses={"200": JogoViewSchema, "404": ErrorSchema})
+def get_jogo(query: JogoBuscaSchema):
+    """Faz a busca por um jogo a partir do id do produto
+
+    Retorna uma representação dos jogos e comentários associados.
+    """
+    jogo_nome = query.nome
+    logger.debug(f"Coletando dados sobre o jogo #{jogo_nome}")
+    # criando conexão com a base
+    session = Session()
+    # fazendo a busca
+    jogo = session.query(Jogo).filter(Jogo.nome == jogo_nome).first()
+
+    if not jogo:
+        # se o jogo não foi encontrado
+        error_msg = "jogo não encontrado na base :/"
+        logger.warning(f"Erro ao buscar jogo '{jogo_nome}', {error_msg}")
+        return {"message": error_msg}, 404
+    else:
+        logger.debug(f"jogo econtrado: '{jogo.nome}'")
+        # retorna a representação de jogo
+        return apresenta_jogo(jogo), 200
+
+
+@app.delete('/jogo', tags=[jogo_tag],
+            responses={"200": JogoDelSchema, "404": ErrorSchema})
+def del_jogo(query: JogoBuscaSchema):
+    """Deleta um Produto a partir do id do jogo informado
+
+    Retorna uma mensagem de confirmação da remoção.
+    """
+    jogo_id = query.id
+    jogo_nome = query.nome
+    print(jogo_id)
+    # criando conexão com a base
+    session = Session()
+    jogo = session.query(Jogo).filter(Jogo.id == jogo_id)
+    logger.debug(f"Deletando dados sobre jogo #{jogo_nome}")
+    
+    # fazendo a remoção
+    count = session.query(Jogo).filter(Jogo.id == jogo_id).delete()
     session.commit()
-    logger.debug(f"adicionando jogo de nome:  '{jogo.nome}'")
+
+    if count:
+        # retorna a representação da mensagem de confirmação
+        logger.debug(f"Deletado jogo #{jogo_nome}")
+        return {"message": "jogo removido", "id": jogo_id}
+    else:
+        # se o jogo não foi encontrado
+        error_msg = "Jogo não encontrado na base :/"
+        logger.warning(f"Erro ao deletar jogo #'{jogo_id}', {jogo.nome}, {error_msg}")
+        return {"message": error_msg}, 404
+
+
+@app.post('/comentario', tags=[comentario_tag],
+          responses={"200": JogoViewSchema, "404": ErrorSchema})
+def add_comentario(form: ComentarioSchema):
+    """Adiciona de um novo comentário à um jogo cadastrado na base identificado pelo id
+
+    Retorna uma representação dos jogos e comentários associados.
+    """
+    jogo_id  = form.jogo_id
+    logger.debug(f"Adicionando comentários ao jogo #{jogo_id}")
+    # criando conexão com a base
+    session = Session()
+    # fazendo a busca pelo jogo
+    jogo = session.query(Jogo).filter(Jogo.id == jogo_id).first()
+
+    if not jogo:
+        # se jogo não encontrado
+        error_msg = "Jogo não encontrado na base :/"
+        logger.warning(f"Erro ao adicionar comentário ao jogo '{jogo_id}', {error_msg}")
+        return {"message": error_msg}, 404
+
+    # criando o comentário
+    texto = form.texto
+    comentario = Comentario(texto)
+
+    # adicionando o comentário ao produto
+    jogo.adiciona_comentario(comentario)
+    session.commit()
+
+    logger.debug(f"Adicionado comentário ao produto #{jogo_id}")
+
+    # retorna a representação de produto
     return apresenta_jogo(jogo), 200
-
-except IntegrityError as e:
-    #como a duplicidade do nome é a razão do IntegrityError
-    error_msg = "Jogo de mesmo nome já salvo na base :/"
-    logger.warning(f"Erro ao adicionar jogo '{jogo.nome}', {error_msg}")
-    return {"message": error_msg}, 409
-
-except Exception as e: 
-    # Caso fora do previsto 
-    error_msg = "Não Foi possivel salvar novo jogo :/"
-    logger.debug(f"erro ao adicionar produto '{jogo.nome}',{error_msg}")
-    return {"message": error_msg}, 400

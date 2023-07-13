@@ -26,7 +26,18 @@ dictConfig({
             "class": "logging.StreamHandler",
             "formatter": "default",
             "stream": "ext://sys.stdout",
+            "level": "DEBUG",
         },
+        # "email": {
+        #     "class": "logging.handlers.SMTPHandler",
+        #     "formatter": "default",
+        #     "level": "ERROR",
+        #     "mailhost": ("smtp.example.com", 587),
+        #     "fromaddr": "devops@example.com",
+        #     "toaddrs": ["receiver@example.com", "receiver2@example.com"],
+        #     "subject": "Error Logs",
+        #     "credentials": ("username", "password"),
+        # },
         "error_file": {
             "class": "logging.handlers.RotatingFileHandler",
             "formatter": "detailed",
@@ -46,14 +57,14 @@ dictConfig({
     },
     "loggers": {
         "gunicorn.error": {
-            "handlers": ["console", "error_file"],
-            "level": "INFO",
+            "handlers": ["console", "error_file"],  #, email],
+            "level": "DEBUG",
             "propagate": False,
         }
     },
     "root": {
         "handlers": ["console", "detailed_file"],
-        "level": "INFO",
+        "level": "DEBUG",
     }
 })
 

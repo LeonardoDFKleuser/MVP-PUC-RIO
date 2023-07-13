@@ -1,20 +1,26 @@
 /*
-    Função para obter uma lista existente no servidor preenchida preeviamente via requisição GET
+  --------------------------------------------------------------------------------------
+  Função para obter uma lista existente no servidor preenchida preeviamente via requisição GET
+  --------------------------------------------------------------------------------------
 */
-
-const getList = async () => {
-  let url = "http://127.0.0.1:5000/produtos";
+const getList = () => {
+  let url = "http://127.0.0.1:5000/jogos";
   fetch(url, {
     method: "get",
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status != 200) {
+        throw response.body.message;
+      }
+      return response.json();
+    })
     .then((data) => {
-      data.jogos.ForEach((item) =>
-        insertList(item.nome, item.Plataforma, item.Loja, item.preço)
+      data.jogos.forEach((item) =>
+        insertList(item.nome, item.plataforma, item.loja, item.preco, item.id)
       );
     })
     .catch((error) => {
-      console.error("error:", error);
+      console.error("Error:", error);
     });
 };
 
@@ -23,7 +29,9 @@ const getList = async () => {
   Chamada da função para carregamento inicial dos dados
   --------------------------------------------------------------------------------------
 */
-getList();
+document.addEventListener("DOMContentLoaded", () => {
+  getList();
+});
 
 /*
     Definição de Plataformas e Lojas para cadastro
@@ -96,8 +104,8 @@ const insertList = (gameName, gamePlatform, gameStore, gamePrice, gameId) => {
   gamePriceCell.innerText = gamePrice;
 
   let gameDeleteCell = document.createElement("td");
-  gameDeleteCell.innerHTML = "&amp;times";
-  gameDeleteCell.onclick = deleteItem(gameId);
+  gameDeleteCell.innerHTML = "&times;";
+  gameDeleteCell.addEventListener("click", () => deleteItem(gameId, row));
 
   row.appendChild(gameNameCell);
   row.appendChild(gamePlatformCell);
@@ -117,30 +125,43 @@ const insertList = (gameName, gamePlatform, gameStore, gamePrice, gameId) => {
   Função para colocar um item na lista do servidor via requisição POST
   --------------------------------------------------------------------------------------
 */
-const postItem = async (gameName, gamePlatform, gameStore, gamePrice) => {
+const postItem = (gameName, gamePlatform, gameStore, gamePrice) => {
   const formData = new FormData();
   formData.append("nome", gameName);
   formData.append("plataforma", gamePlatform);
   formData.append("loja", gameStore);
-  formData.append("valor", gamePrice);
+  formData.append("preco", gamePrice);
 
-  let url = "http://127.0.0.1:5000/produto";
+  let url = "http://127.0.0.1:5000/jogo";
   fetch(url, {
     method: "post",
     body: formData,
   })
     .then((response) => {
-      response.json();
-      insertList(gameName, gamePlatform, gameStore, gamePrice);
+      if (response.status != 200) {
+        if (response.body) {
+          throw response.json();
+        }
+        throw response;
+      }
+      return response.json();
+    })
+    .then((data) => {
+      insertList(gameName, gamePlatform, gameStore, gamePrice, data.id);
+      alert("Item adicionado!");
     })
     .catch((error) => {
-      console.error("Error:", error);
+      return error;
+    })
+    .then((data) => {
+      console.error("Error:", data);
+      alert(`Erro no cadastro: ${data}`);
     });
 };
 
 /*
   --------------------------------------------------------------------------------------
-  Função para adicionar um novo item com nome, Plataforma, Loja e valor 
+  Função para adicionar um novo item com Nome, Plataforma, Loja e valor 
   --------------------------------------------------------------------------------------
 */
 const newGame = () => {
@@ -157,6 +178,39 @@ const newGame = () => {
     return;
   } else {
     postItem(gameName, gamePlatform, gameStore, gamePrice);
-    alert("Item adicionado!");
   }
+};
+
+/*
+  --------------------------------------------------------------------------------------
+  Função para deletar um item da lista do servidor via requisição DELETE
+  --------------------------------------------------------------------------------------
+*/
+const deleteItem = (item, row) => {
+  let url = "http://127.0.0.1:5000/jogo?id=" + item;
+  fetch(url, {
+    method: "delete",
+  })
+    .then((response) => {
+      if (response.status != 200) {
+        throw response.body.message;
+      }
+      return response.json();
+    })
+    .then(() => {
+      removeList(row);
+      alert("Jogo foi removido com Sucesso!");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+/*
+  Função para remoção de lista 
+*/
+
+const removeList = (row) => {
+  let tableBody = document.getElementById("myGamesBody");
+  tableBody.removeChild(row);
 };
