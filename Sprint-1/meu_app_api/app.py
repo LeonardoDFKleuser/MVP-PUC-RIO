@@ -86,31 +86,6 @@ def get_jogos():
         return apresenta_jogos(jogos), 200
 
 
-@app.get('/jogo', tags=[jogo_tag],
-         responses={"200": JogoViewSchema, "404": ErrorSchema})
-def get_jogo(query: JogoBuscaSchema):
-    """Faz a busca por um jogo a partir do id do produto
-
-    Retorna uma representação dos jogos e comentários associados.
-    """
-    jogo_nome = query.nome
-    logger.debug(f"Coletando dados sobre o jogo #{jogo_nome}")
-    # criando conexão com a base
-    session = Session()
-    # fazendo a busca
-    jogo = session.query(Jogo).filter(Jogo.nome == jogo_nome).first()
-
-    if not jogo:
-        # se o jogo não foi encontrado
-        error_msg = "jogo não encontrado na base :/"
-        logger.warning(f"Erro ao buscar jogo '{jogo_nome}', {error_msg}")
-        return {"message": error_msg}, 404
-    else:
-        logger.debug(f"jogo econtrado: '{jogo.nome}'")
-        # retorna a representação de jogo
-        return apresenta_jogo(jogo), 200
-
-
 @app.delete('/jogo', tags=[jogo_tag],
             responses={"200": JogoDelSchema, "404": ErrorSchema})
 def del_jogo(query: JogoBuscaSchema):
@@ -141,35 +116,4 @@ def del_jogo(query: JogoBuscaSchema):
         return {"message": error_msg}, 404
 
 
-@app.post('/comentario', tags=[comentario_tag],
-          responses={"200": JogoViewSchema, "404": ErrorSchema})
-def add_comentario(form: ComentarioSchema):
-    """Adiciona de um novo comentário à um jogo cadastrado na base identificado pelo id
 
-    Retorna uma representação dos jogos e comentários associados.
-    """
-    jogo_id  = form.jogo_id
-    logger.debug(f"Adicionando comentários ao jogo #{jogo_id}")
-    # criando conexão com a base
-    session = Session()
-    # fazendo a busca pelo jogo
-    jogo = session.query(Jogo).filter(Jogo.id == jogo_id).first()
-
-    if not jogo:
-        # se jogo não encontrado
-        error_msg = "Jogo não encontrado na base :/"
-        logger.warning(f"Erro ao adicionar comentário ao jogo '{jogo_id}', {error_msg}")
-        return {"message": error_msg}, 404
-
-    # criando o comentário
-    texto = form.texto
-    comentario = Comentario(texto)
-
-    # adicionando o comentário ao produto
-    jogo.adiciona_comentario(comentario)
-    session.commit()
-
-    logger.debug(f"Adicionado comentário ao produto #{jogo_id}")
-
-    # retorna a representação de produto
-    return apresenta_jogo(jogo), 200

@@ -17,8 +17,10 @@ obs: vale observer o endereço representado no terminal pois deve terminar com "
 antes da instalação dos requirements é necessario rodar 2 comando para ativar a pasta env na qual os requirements serão instalados. (Os comando que serão indicados foram rodados no windows, caso esteja rodando pelo linux pode possuir alguma mudança na nomeclatura)
 Comando para criar a pasta env no diretorio:
     python3 -m venv env
+
 Comando para a ativar a pasta env:
     env/Scripts/activate
+
 Comando para instalar os requirements:
     (env)$ pip install -r requirements.txt
 ```

@@ -105,6 +105,7 @@ const insertList = (gameName, gamePlatform, gameStore, gamePrice, gameId) => {
 
   let gameDeleteCell = document.createElement("td");
   gameDeleteCell.innerHTML = "&times;";
+  gameDeleteCell.setAttribute("class", "delete-item");
   gameDeleteCell.addEventListener("click", () => deleteItem(gameId, row));
 
   row.appendChild(gameNameCell);
@@ -150,12 +151,10 @@ const postItem = (gameName, gamePlatform, gameStore, gamePrice) => {
       insertList(gameName, gamePlatform, gameStore, gamePrice, data.id);
       alert("Item adicionado!");
     })
-    .catch((error) => {
-      return error;
-    })
-    .then((data) => {
-      console.error("Error:", data);
-      alert(`Erro no cadastro: ${data}`);
+    .catch(async (data) => {
+      let error = await data;
+      console.error("Error:", error);
+      alert(`Erro no cadastro: ${error.message}`);
     });
 };
 
