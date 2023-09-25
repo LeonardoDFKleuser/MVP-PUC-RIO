@@ -1,15 +1,9 @@
 body {
   background-image: linear-gradient(to bottom, blueviolet, black);
 }
+
 * {
   font-family: Roboto, Comic Sans;
-}
-ul,
-li {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  background-color: blueviolet;
 }
 
 header {
@@ -27,10 +21,16 @@ header {
   top: 0px;
 }
 
+.bg-purple {
+  background-color: blueviolet;
+}
+
+
 .banner {
   display: flex;
   justify-content: center;
 }
+
 .banner img {
   margin: 0px 0px 0px 0px;
   width: auto;
@@ -39,20 +39,26 @@ header {
   overflow: hidden;
 }
 
-.newGame {
+.newGame,
+.searchGame {
   padding: 30px 40px;
   color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
 }
 
-.newGame:after {
+.newGame:after,
+.searchGame:after{
   content: "";
   display: table;
   clear: both;
 }
 
-#newGameName {
+#newGameName,
+#newPlatform,
+#newStore,
+#newPrice,
+#searchGameName {
   margin: 0;
   background-color: rgb(180, 148, 210);
   border: 1px solid rgb(35, 32, 24);
@@ -62,7 +68,9 @@ header {
   font-size: 16px;
 }
 
-#newGameName::placeholder {
+#newGameName::placeholder,
+#newPrice::placeholder,
+#searchGameName::placeholder {
   color: black;
 }
 
@@ -70,41 +78,8 @@ label {
   display: block;
 }
 
-#newPlatform {
-  margin: 0;
-  background-color: rgb(180, 148, 210);
-  border: 1px solid rgb(35, 32, 24);
-  width: auto;
-  border-radius: 10px 0px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-#newStore {
-  margin: 0;
-  background-color: rgb(180, 148, 210);
-  border: 1px solid rgb(35, 32, 24);
-  width: auto;
-  border-radius: 10px 0px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-#newPrice {
-  margin: 0;
-  background-color: rgb(180, 148, 210);
-  border: 1px solid rgb(35, 32, 24);
-  width: auto;
-  border-radius: 10px 0px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-#newPrice::placeholder {
-  color: black;
-}
-
-.addBtn {
+.addBtn,
+.searchBtn {
   padding: 9px 10px;
   background-color: rgb(70, 5, 45);
   color: white;
@@ -115,7 +90,8 @@ label {
   border-radius: 10px 0px;
 }
 
-.addBtn:hover {
+.addBtn:hover,
+.searchBtn:hover {
   background-color: #2d0466;
   color: white;
 }
@@ -162,7 +138,7 @@ footer {
   padding: 30px;
 }
 
-footer img {
+nav img {
   margin: 0px 0px 0px 0px;
   width: 5vh;
   height: 5vh;
