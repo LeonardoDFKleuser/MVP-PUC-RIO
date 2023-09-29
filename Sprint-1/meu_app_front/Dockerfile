@@ -1,7 +1,13 @@
-FROM php:8.2-cli
+FROM node:lts
 
 WORKDIR /usr/src/app/front
 
 COPY Sprint-1/meu_app_front/ .
 
-CMD ["php", "./index.html"]
+RUN npm install --production
+
+RUN npm run build
+
+RUN npm install -g serve
+
+CMD ["serve", "-s build"]

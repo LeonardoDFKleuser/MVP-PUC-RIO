@@ -4,7 +4,7 @@ services:
   back:
     image: python:3.11.5
     build: 
-      dockerfile: Sprint-1/meu_app_api/dockerfile
+      dockerfile: Sprint-1/meu_app_api/Dockerfile
     ports:
       - "5000:5000"
     restart: always
@@ -15,12 +15,11 @@ services:
   front:
     depends_on:
       - meu_app_api
-    image: php:8.2-cli
+    image: node:lts
     build: 
-      dockerfile: Sprint-1/meu_app_front/dockerfile
+      dockerfile: Sprint-1/meu_app_front/Dockerfile
     ports:
-      - "8080:80"
-      - "44301:443"
+      - "3000:80"
     restart: always
     container_name: meu_app_front
     networks:
