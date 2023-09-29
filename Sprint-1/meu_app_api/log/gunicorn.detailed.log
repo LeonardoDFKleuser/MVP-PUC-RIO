@@ -1,8 +1,0 @@
-[2023-09-18 20:42:49,845] INFO _log() L224   * Running on all addresses (0.0.0.0)
-   WARNING: This is a development server. Do not use it in a production deployment.
- * Running on http://127.0.0.1:5000
- * Running on http://192.168.0.48:5000 (Press CTRL+C to quit) - call_trace=C:\Users\leona\OneDrive\Documentos\Puc\MVP-PUC-RIO\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
-[2023-09-18 20:50:24,580] INFO _log() L224   * Running on all addresses (0.0.0.0)
-   WARNING: This is a development server. Do not use it in a production deployment.
- * Running on http://127.0.0.1:5000
- * Running on http://192.168.0.48:5000 (Press CTRL+C to quit) - call_trace=C:\Users\leona\OneDrive\Documentos\Puc\MVP-PUC-RIO\MVP-PUC-RIO\Sprint-1\meu_app_api\env\Lib\site-packages\werkzeug\_internal.py L224 
