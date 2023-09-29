@@ -1,0 +1,161 @@
+body {
+    background-image: linear-gradient(to bottom, blueviolet, black);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.title {
+    color: blue;
+    width: 100%;
+    display: inline-block;
+    padding: 2px 0px;
+    position: sticky;
+    top: 0px;
+}
+
+.bg-purple {
+    background-color: blueviolet;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+}
+
+.banner img {
+    margin: 0px 0px 0px 0px;
+    width: auto;
+    height: auto;
+    max-height: 30vh;
+    overflow: hidden;
+}
+
+.newGame,
+.searchGame {
+    padding: 30px 40px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+}
+
+.newGame:after,
+.searchGame:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#newGameName,
+#newPlatform,
+#newStore,
+#newPrice,
+#searchGameName {
+    margin: 0;
+    background-color: rgb(180, 148, 210);
+    border: 1px solid rgb(35, 32, 24);
+    width: auto;
+    border-radius: 10px 0px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#newGameName::placeholder,
+#newPrice::placeholder,
+#searchGameName::placeholder {
+    color: black;
+}
+
+label {
+    display: block;
+}
+
+.addBtn,
+.searchBtn {
+    padding: 9px 10px;
+    background-color: rgb(70, 5, 45);
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px 0px;
+}
+
+.addBtn:hover,
+.searchBtn:hover {
+    background-color: #2d0466;
+    color: white;
+}
+
+.games {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.game-cover {
+    height: 125px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.pagination {
+    margin-top: -1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.page-item :not(:disabled):hover {
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #360c8b;
+    font-weight: bolder;
+}
+
+.table {
+    border: 1px solid blueviolet;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    background-color: rgb(70, 5, 45);
+    color: #e3b9e3;
+    padding: 12px 10px;
+    font-size: 18px;
+}
+
+.table tr:hover th,
+.table tr:hover td {
+    background-color: rgb(45, 4, 102);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+nav img {
+    margin: 0px 0px 0px 0px;
+    width: 5vh;
+    height: 5vh;
+    overflow: hidden;
+}
+
+.delete-item {
+    text-align: center;
+    cursor: pointer;
+}
