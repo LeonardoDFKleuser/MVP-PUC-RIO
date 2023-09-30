@@ -28,7 +28,7 @@ export default function Game({ onLoad, setGameTitle, gameTitle }) {
 
   const toastInitialState = {
     idx: toasts.length,
-    imgSrc: game.background ?? imgSrcAlt,
+    imgSrc: game.background_image ?? imgSrcAlt,
     imgAlt: game.name,
     autohide: true,
     show: show,
